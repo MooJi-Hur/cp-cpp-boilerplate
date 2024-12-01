@@ -1,5 +1,5 @@
 # cp-cpp-boilerplate
-2024. 11. 30 - 2024. 12. 01. c++ 백준 코딩 테스트 샘플 파일
+`2024. 11. 30 - 2024. 12. 01.` c++ 백준 코딩 테스트 샘플 파일
 
 - `ONLINE_JUDGE` 이름으로 아래 기능 전처리 구문 작성
 - input.txt, output.txt 파일 생성 및 cin, cout 각각 연결
