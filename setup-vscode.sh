@@ -11,18 +11,20 @@ cat > tasks.json <<EOL
             "label": "C/C++: clang++ build active file",
             "command": "/usr/bin/clang++",
             "args": [
+                "-std=c++17",
+                "-stdlib=libc++",
                 "-fcolor-diagnostics",
                 "-fansi-escape-codes",
                 "-g",
-                "${file}",
+                "\${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "\${fileDirname}/\${fileBasenameNoExtension}"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "\${fileDirname}"
             },
             "problemMatcher": [
-                "$gcc"
+                "\$gcc"
             ],
             "group": {
                 "kind": "build",
@@ -65,7 +67,7 @@ cat > c_cpp_properties.json <<EOL
         {
             "name": "Mac",
             "includePath": [
-                "${workspaceFolder}/**"
+                "\${workspaceFolder}/**"
             ],
             "defines": [],
             "macFrameworkPath": [
@@ -85,5 +87,3 @@ EOL
 echo "Setup completed."
 echo "Please install the recommanded extensions and verify your c++ compiler path, e.g. 'which clang++'."
 echo "To set up a specific problem, run the setup-vscode.sh with the problem number, e.g. './setup-vscode.sh 1001'."
-
-
