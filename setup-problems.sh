@@ -21,51 +21,39 @@ cat > main.cpp <<EOL
  * URL: https://www.acmicpc.net/problem/$PROBLEM_NUMBER
  */
 
-#include <iostream>
-
-using namespace std;
+// Add include files and namespaces.
 
 #ifndef ONLINE_JUDGE
 #include <chrono>
-#include <cstdio>
 #include <fstream>
-
 using namespace chrono;
 
 #endif
 
-int main(void) {
-/* === Local Execution Time Measurement and File I/O === */
+int main() {
+// === File I/O and Timing ===
 #ifndef ONLINE_JUDGE
   auto start = high_resolution_clock::now();
-
-  ios::sync_with_stdio(false);
-  cin.tie(nullptr);
 
   ifstream inputFile("input.txt");
   ofstream outputFile("output.txt");
 
-  if (inputFile.is_open() && outputFile.is_open()) {
+  if (inputFile && outputFile) {
     cin.rdbuf(inputFile.rdbuf());
     cout.rdbuf(outputFile.rdbuf());
   } else {
-    cerr << "Failed to open input/output files." << endl;
+    cerr << "Error: Could not open files." << endl;
     return 1;
   }
-
 #endif
 
-  /* === Problem Solving Code ===
-    Write the solution code for the problem here. */
+// Add your code.
 
-
-
-/* === Local Execution Time Measurement === */
+// === Timing ===
 #ifndef ONLINE_JUDGE
   auto end = high_resolution_clock::now();
-  auto duration = duration_cast<milliseconds>(end - start);
-
-  clog << "Execution time: " << duration.count() << " ms" << endl;
+  clog << "Time: " << duration_cast<milliseconds>(end - start).count() << "ms "
+       << endl;
 #endif
 
   return 0;
@@ -77,3 +65,6 @@ EOL
 touch input.txt output.txt
 
 echo "Setup completed for BOJ Problem #$PROBLEM_NUMBER"
+
+echo "Fill the input file with the necessary data."
+echo "You can check the execution results in the output file."

@@ -28,16 +28,23 @@
     chmod +x setup-vscode.sh && chmod +x setup-problems.sh
     ```
 
+- 맥북 버전에 따라 `setup-vscode.sh`파일 내 아래 경로 수정
+  - 경로 확인 `clang++ -v`
+
+  ```sh
+  TARGET_DIR="/usr/local/include/bits"
+  ```
 - 프로젝트 셋팅
-    ```
+    ```sh
     ./setup-vscode.sh
     ```
 
 - 문제 폴더 생성
-    ```
+    ```sh
     ./setup-problems.sh {문항번호}
     ```
-    ```
+    - 예제
+    ```sh
     ./setup-problems.sh 1001
     ```
 - input.txt 내 입력 내용 추가 후 main.cpp 내 코드 작성 
@@ -62,60 +69,55 @@
 - 샘플 폴더 관련 문제 : [백준 1000번](https://www.acmicpc.net/problem/1000)
 
 ### `main.cpp`
-```c
+```cpp
 /*
  * Problem: 1000
  * URL: https://www.acmicpc.net/problem/1000
  */
 
-#include <iostream>
+// Add include files and namespaces.
+#include <bits/stdc++.h>
 
 using namespace std;
 
-#ifndef ONLINE_JUDGE    
+#ifndef ONLINE_JUDGE
 #include <chrono>
-#include <cstdio>
 #include <fstream>
-
 using namespace chrono;
 
 #endif
 
-int main(void) {
-/* === Local Execution Time Measurement and File I/O === */
-#ifndef ONLINE_JUDGE    // 해당 전처리 이름이 존재할 경우, 코드를 실행하지 않음
-  auto start = high_resolution_clock::now();    // 코드 실행 시간 측정 시작
-
-  ios::sync_with_stdio(false);
-  cin.tie(nullptr);
+int main() {
+// === File I/O and Timing ===
+#ifndef ONLINE_JUDGE
+  auto start = high_resolution_clock::now();
 
   ifstream inputFile("input.txt");
   ofstream outputFile("output.txt");
 
-  if (inputFile.is_open() && outputFile.is_open()) {    // 파일이 존재한다면 I/O와 연결
+  if (inputFile && outputFile) {
     cin.rdbuf(inputFile.rdbuf());
     cout.rdbuf(outputFile.rdbuf());
   } else {
-    cerr << "Failed to open input/output files." << endl;
+    cerr << "Error: Could not open files." << endl;
     return 1;
   }
-
 #endif
 
-  /* === Problem Solving Code ===
-    Write the solution code for the problem here. */
+  // Add your code.
+  int a, b;
+  cin >> a >> b;
+  int sum;
+  sum = a + b;
+  cout << sum << endl;
 
-
-
-/* === Local Execution Time Measurement === */
+// === Timing ===
 #ifndef ONLINE_JUDGE
   auto end = high_resolution_clock::now();
-  auto duration = duration_cast<milliseconds>(end - start);
-
-  clog << "Execution time: " << duration.count() << " ms" << endl;  // DEBUG COLSOLE에 실행 시간 출려
+  clog << "Time: " << duration_cast<milliseconds>(end - start).count() << "ms "
+       << endl;
 #endif
 
   return 0;
 }
-
 ```
